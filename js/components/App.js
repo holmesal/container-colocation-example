@@ -1,14 +1,15 @@
 import React from 'react';
 import Relay from 'react-relay';
+import Book from './book';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Widget list</h1>
+        <h1>Books</h1>
         <ul>
-          {this.props.viewer.widgets.edges.map(edge =>
-            <li key={edge.node.id}>{edge.node.name} (ID: {edge.node.id})</li>
+          {this.props.viewer.books.edges.map(edge =>
+            <Book book={edge.node} key={edge.node.id} />
           )}
         </ul>
       </div>
@@ -19,12 +20,12 @@ class App extends React.Component {
 export default Relay.createContainer(App, {
   fragments: {
     viewer: () => Relay.QL`
-      fragment on User {
-        widgets(first: 10) {
+      fragment on Author {
+        books(first: 10) {
           edges {
             node {
               id,
-              name,
+              ${Book.getFragment('book')}
             },
           },
         },

@@ -6,6 +6,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import {clean} from 'require-clean';
 import {exec} from 'child_process';
+import DashboardPlugin from 'webpack-dashboard/plugin';
 
 const APP_PORT = 3000;
 const GRAPHQL_PORT = 8080;
@@ -28,9 +29,11 @@ function startAppServer(callback) {
     },
     output: {filename: '/app.js', path: '/', publicPath: '/js/'}
   });
+  compiler.apply(new DashboardPlugin());
   appServer = new WebpackDevServer(compiler, {
     contentBase: '/public/',
     proxy: {'/graphql': `http://localhost:${GRAPHQL_PORT}`},
+    quiet: true,
     publicPath: '/js/',
     stats: {colors: true}
   });

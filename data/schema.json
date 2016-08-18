@@ -45,7 +45,60 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "User",
+                "name": "Author",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "authors",
+              "description": "All of the authors that exist",
+              "args": [
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "AuthorConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -95,20 +148,20 @@
           "possibleTypes": [
             {
               "kind": "OBJECT",
-              "name": "User",
+              "name": "Author",
               "ofType": null
             },
             {
               "kind": "OBJECT",
-              "name": "Widget",
+              "name": "Book",
               "ofType": null
             }
           ]
         },
         {
           "kind": "OBJECT",
-          "name": "User",
-          "description": "A person who uses our app",
+          "name": "Author",
+          "description": "A person who writes books",
           "fields": [
             {
               "name": "id",
@@ -127,8 +180,20 @@
               "deprecationReason": null
             },
             {
-              "name": "widgets",
-              "description": "A person's collection of widgets",
+              "name": "name",
+              "description": "What should we call you?",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "books",
+              "description": "An author's collection of books",
               "args": [
                 {
                   "name": "after",
@@ -173,7 +238,19 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "WidgetConnection",
+                "name": "BookConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "photoUrl",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -186,10 +263,49 @@
               "kind": "INTERFACE",
               "name": "Node",
               "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Photographed",
+              "ofType": null
             }
           ],
           "enumValues": null,
           "possibleTypes": null
+        },
+        {
+          "kind": "INTERFACE",
+          "name": "Photographed",
+          "description": "An interface type for things that have been photographed",
+          "fields": [
+            {
+              "name": "photoUrl",
+              "description": "The url of the photograph",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Author",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Book",
+              "ofType": null
+            }
+          ]
         },
         {
           "kind": "SCALAR",
@@ -213,7 +329,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "WidgetConnection",
+          "name": "BookConnection",
           "description": "A connection to a list of items.",
           "fields": [
             {
@@ -241,7 +357,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "WidgetEdge",
+                  "name": "BookEdge",
                   "ofType": null
                 }
               },
@@ -333,7 +449,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "WidgetEdge",
+          "name": "BookEdge",
           "description": "An edge in a connection.",
           "fields": [
             {
@@ -342,7 +458,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "Widget",
+                "name": "Book",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -372,8 +488,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Widget",
-          "description": "A shiny widget",
+          "name": "Book",
+          "description": "A super-readable book",
           "fields": [
             {
               "name": "id",
@@ -392,8 +508,32 @@
               "deprecationReason": null
             },
             {
-              "name": "name",
-              "description": "The name of the widget",
+              "name": "title",
+              "description": "The name of the book",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "author",
+              "description": "The great mind that penned this staggering work.",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Author",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "photoUrl",
+              "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -410,8 +550,95 @@
               "kind": "INTERFACE",
               "name": "Node",
               "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Photographed",
+              "ofType": null
             }
           ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "AuthorConnection",
+          "description": "A connection to a list of items.",
+          "fields": [
+            {
+              "name": "pageInfo",
+              "description": "Information to aid in pagination.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "edges",
+              "description": "A list of edges.",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "AuthorEdge",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "AuthorEdge",
+          "description": "An edge in a connection.",
+          "fields": [
+            {
+              "name": "node",
+              "description": "The item at the end of the edge",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Author",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cursor",
+              "description": "A cursor for use in pagination",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
           "enumValues": null,
           "possibleTypes": null
         },
