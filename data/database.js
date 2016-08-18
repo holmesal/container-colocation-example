@@ -58,7 +58,8 @@ module.exports = {
   getAuthors: () => authors,
   getViewer: () => viewer,
   getBook: (id) => books.find(b => b.id === id),
-  getBooks: () => books,
+  getAllBooks: () => books,
+  getBooksByAuthor: (id) => _.filter(books, {author: id}),
   Author,
   Book,
 };

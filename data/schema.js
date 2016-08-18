@@ -38,7 +38,8 @@ import {
   getAuthors,
   getViewer,
   getBook,
-  getBooks,
+  getAllBooks,
+  getBooksByAuthor
 } from './database';
 
 /**
@@ -106,7 +107,7 @@ var authorType = new GraphQLObjectType({
       type: bookConnection,
       description: 'An author\'s collection of books',
       args: connectionArgs,
-      resolve: (_, args) => connectionFromArray(getBooks(), args),
+      resolve: (author, args) => connectionFromArray(getBooksByAuthor(author.id), args)
     },
     photoUrl: {
       type: GraphQLString
