@@ -8,9 +8,17 @@ Here are the things I want to demonstrate:
 * Colocating (small) relay containers with react components
 * Using interfaces/unions in the type system to handle shared fields/properties
 * Using interfaces/unions in Relay to build general-purpose containers+components
-* Using connections in the schema
 
-To keep things simple, I'm just going to use a simple 2-type schema to demonstrate these concepts - imagine we're building the original Amazon (remember when it was a bookstore?) - so we've got `Author`s writes `Book`s.
+To keep things simple, I'm just going to use a simple 2-type schema to demonstrate these concepts - imagine we're building the original Amazon (remember when it was a bookstore?) - so we've got `Author`s that write `Book`s.
+
+Also, here are some of the more important files:
+
+* [GraphQL schema](/data/schema.js)
+* [Simple fake "database"](/data/database.js)
+* [Root component (List of `Book`s)](/js/components/App.js)
+* [`Book` component](/js/components/Book.js)
+* [`Author` component](/js/components/Author.js)
+* [`Photo` component (demonstrates using interfaces)](/js/components/Photo.js)
 
 Let's dive in.
 
@@ -334,21 +342,7 @@ Cool!
 
 
 
-## Installation
-
-```
-npm install
-```
-
-## Running
-
-Start a local server:
-
-```
-npm start
-```
-
-## Developing
+## (Developing)
 
 Any changes you make to files in the `js/` directory will cause the server to
 automatically rebuild the app and refresh your browser.
