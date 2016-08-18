@@ -190,7 +190,7 @@ export default Relay.createContainer(Author, {
 
 This `<Author>` component depends on the `name` field, so it specifies it in it's container. This fragment gets pulled up into the parent `<Book>` component at request-time.
 
-A very interesting (and awesome IMO) relay feature is that even if the parent (in this case, `<Book>`) has a fragment that contains the `name` field, if `<Author>` does not specify the `name` field in it's own fragment, it **will not be present on `this.props.author`*. This is really great - it encourages you not to rely on implicit dependencies specified in the parent and instead encourages you to be as explicit as possible.
+A very interesting (and awesome IMO) relay feature is that even if the parent (in this case, `<Book>`) has a fragment that contains the `name` field, if `<Author>` does not specify the `name` field in it's own fragment, it **will not be present on `this.props.author`**. This is really great - it encourages you not to rely on implicit dependencies specified in the parent and instead encourages you to be as explicit as possible.
 
 
 
