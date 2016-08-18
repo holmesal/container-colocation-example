@@ -22,6 +22,17 @@ Also, here are some of the more important files:
 
 Let's dive in.
 
+## Getting started
+
+This will be a lot more fun if you play around with the schema while going through this writeup. Here's how to get up and running:
+
+```
+npm install
+npm start
+```
+
+Open up the graphiQL interface by going to http://localhost:8080. If you haven't used GraphiQL before, it's amazing. You can type graphql queries on the left and press play, and see the results on the right. It also autocompletes your schema, and you can browse your entire schema by hitting `< Docs` in the upper-right.
+
 # Connecting things in the type system
 
 There are two ways to connect two types together, and it depends on whether the relationship is one-to-one or one-to-many.
